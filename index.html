@@ -20,6 +20,7 @@
     <script src="js/jquery/jquery-ui.min.js"></script>
     <script src="js/objects/Ticket.js"></script>
     <script src="js/controllers/TicketsController.js"></script>
+    <script src="js/ui/Calendar.js"></script>
     <script>
         $(function () {
  
@@ -47,6 +48,10 @@
             }
         };
         document.write("</tr></table>"); */
+
+        let calendar = new Calendar();
+        document.writeln(calendar.showCalendar().outerHTML);
+
         let Tickets = new TicketsController();
     
         Tickets.sayHello();
