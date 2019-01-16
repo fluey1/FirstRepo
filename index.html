@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Draggable - Default functionality</title>
+    <style>
+        #draggable,
+        #mybox {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+            border: 1px;
+            border-color: black;
+            border-style: solid
+        }
+    </style>
+    <script src="js/jquery/jquery-3.3.1.js"></script>
+    <script src="js/jquery/jquery-ui.min.js"></script>
+    <script src="js/objects/Ticket.js"></script>
+    <script src="js/controllers/TicketsController.js"></script>
+    <script>
+        $(function () {
+ 
+            $(".ticket").draggable();
+        });
+    </script>
+</head>
+
+<body>
+
+    <script>
+        /* var daysOfWeek = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+
+        document.write("<table border=1><tr>");
+        for (var i = 0; i < daysOfWeek.length; i++) {
+            document.write("<th>" + daysOfWeek[i] + "</th>");
+        }
+        document.write("</tr><tr>");
+        for (var i = 1; i <= 30; i++) {
+            if (i % 7 == 0) {
+                document.write("<td>" + i + "</td></tr>");
+            }
+            else {
+                document.write("<td>" + i + "</td>");
+            }
+        };
+        document.write("</tr></table>"); */
+        let Tickets = new TicketsController();
+    
+        Tickets.sayHello();
+        for(i = 0; i < 10; i++) {
+            let ticket = Tickets.newTicket('New Ticket');
+        console.log(ticket.id + " - " + ticket.title);
+        }
+
+    </script>
+
+</body>
+
+</html>
