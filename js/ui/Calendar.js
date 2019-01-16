@@ -1,5 +1,4 @@
-function Calendar() {
-
+function Calendar(calendarController) {
 
     let daysOfWeek = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
     let table = document.createElement("table");
@@ -20,15 +19,19 @@ function Calendar() {
             
             let cell = document.createElement("td");
             cell.setAttribute("class","calendarDay");
-            cell.innerHTML = i;
+            cell.setAttribute("valign","top");
+            cell.innerHTML = "<div><table><th class='cellHeader'>" + i + "</th><tr id='calendarCell" + i +  "'></tr></div>";
+            calendarController.addCell(i, cell);
             row.appendChild(cell);
             table.appendChild(row);
             row = document.createElement("tr"); 
         }
         else {
             let cell = document.createElement("td");
+            cell.setAttribute("valign","top");
             cell.setAttribute("class","calendarDay");
-            cell.innerHTML = i;
+            cell.innerHTML = "<div><table><th class='cellHeader'>" + i + "</th><tr id='calendarCell" + i +  "'></tr></div>";
+            calendarController.addCell(i, cell);
             row.appendChild(cell);  
         }
     };

@@ -7,41 +7,50 @@
     <title>jQuery UI Draggable - Default functionality</title>
     <style>
         #draggable,
-        #mybox, #ticketCell {
-            width: 120px;
+        #mybox,
+        #ticketCell {
+            width: 130px;
             height: 20px;
             padding: 0.5em;
             border: 1px;
             border-color: black;
-            border-style: solid
+            border-style: solid;
+            background-color: lightsalmon;
         }
-        .calendarDay { 
+
+        .calendarDay {
             width: 150px;
             height: 150px;
             padding: 0.5em;
             border: 1px;
             border-color: black;
-            border-style: solid
+            border-style: solid;
+            background-color: lightslategray;
         }
 
+        .cellHeader {
+            float: left;
+            color: whitesmoke;
+        }
 
+        .table {
+            border-collapse: collapse;
+        }
     </style>
     <script src="js/jquery/jquery-3.3.1.js"></script>
     <script src="js/jquery/jquery-ui.min.js"></script>
     <script src="js/objects/Ticket.js"></script>
     <script src="js/controllers/TicketsController.js"></script>
+    <script src="js/controllers/CalendarController.js"></script>
     <script src="js/ui/Calendar.js"></script>
+
     <script>
+        let calendarController = new CalendarController();
         $(function () {
 
-            $(".ticketCell").draggable({
-                stop: function() {
-                    let pos = this.getBoundingClientRect();
-                    console.log(pos);
-                }
-            });
+            
 
-            $(".ticketCell").dblclick(function(){
+            $(".ticketCell").dblclick(function () {
                 alert(this.innerHTML);
             });
         });
@@ -52,7 +61,7 @@
 
     <script>
 
-        
+
 
         let Tickets = new TicketsController();
         Tickets.initialize(10);
@@ -66,34 +75,58 @@
         <tr>
             <td valign="top">
                 <table id="ticketsTable">
-                    
+
                     <script>
-                    
+
                         let ticketsTable = document.getElementById("ticketsTable");
-                        
+
                         Tickets.getTickets().forEach(element => {
                             let ticketRow = document.createElement("tr");
-                            
+
                             let ticketCell = document.createElement("div");
-                            ticketCell.setAttribute("class","ticketCell");
-                            ticketCell.setAttribute("id","ticketCell");
-                            ticketCell.innerHTML =  element.toString();
+                            ticketCell.setAttribute("class", "ticketCell");
+                            ticketCell.setAttribute("id", "ticketCell");
+                            ticketCell.innerHTML = element.toString();
                             ticketRow.appendChild(ticketCell);
-                            ticketsTable.appendChild(ticketRow); 
+                            ticketsTable.appendChild(ticketRow);
                         });
-                                 
+
                     </script>
                 </table>
-                
+
 
             </td>
-                
-            
+
+
             <td>
-                    <script>
-                            let calendar = new Calendar();
-                            document.writeln(calendar.showCalendar().outerHTML);
-                    </script>
+                <script>
+                    let calendar = new Calendar(calendarController);
+                    document.writeln(calendar.showCalendar().outerHTML);
+                    //console.log(calendarController.getCells().length);
+
+
+                    $(".ticketCell").draggable({
+                        stop: function () {
+                            let pos = this.getBoundingClientRect();
+                            //console.log(pos);
+                            let collision = false;
+                            let cell = null;
+                            let cells = calendarController.getCells();
+                            for(var key in cells)
+                                //let pos = element.getBoundingClientRect();
+                                console.log("key:" + key + " value:" + cells[key]);
+                                /* collision = calendarController.isCollide(this,element);
+                                if(collision) {
+                                    cell = element; 
+                                } */
+                                //let div = document.getElementById("calendarCell"+element.)
+                                //console.log(element.innerHTML + " - " + element);
+                           
+                            console.log("collision: " + collision);
+                            collision = false;
+                        }
+                    });
+                </script>
             </td>
         </tr>
 

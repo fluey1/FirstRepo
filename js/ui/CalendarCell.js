@@ -1,5 +1,6 @@
-function CalendarCell() {
+function CalendarCell(content) {
     let tickets = [];
+    this.content = content;
 
     this.addTicket = function(ticket) {
         tickets.push({
@@ -8,5 +9,9 @@ function CalendarCell() {
         });
     }
 
+    this.removeTicket = function(id) {
+        tickets.splice(id,1);
+    }
 
+    
 }
