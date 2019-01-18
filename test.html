@@ -12,66 +12,60 @@
     <script src="js/fullcalendar/moment.min.js"></script>
     <script src="js/fullcalendar/fullcalendar.js"></script>
     <script src="js/fullCalendar/scheduler.js"></script>
- 
+
 
     <script>
-
-
-
     </script>
 </head>
 
 <body>
     <div id='calendar'></div>
-    <p>welcome</p>
+    <p>welcom home</p>
     <script>
-        $(function () {
+        $(function() {
 
             // page is now ready, initialize the calendar...
 
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
-                
+
                 weekends: false
             })
 
         });
 
         $('#calendar').fullCalendar({
-                // put your options and callbacks here
-        /*     dayClick: function() {
-                alert('a day has been clicked');
-            }, */
-            
+            // put your options and callbacks here
+            /*     dayClick: function() {
+                    alert('a day has been clicked');
+                }, */
+
             defaultView: 'basicWeek',
-            select: function(start, end){
+            select: function(start, end) {
                 var title = prompt('Ticket Title');
                 var eventData;
-                if(title) {
+                if (title) {
                     eventData = {
                         title: title,
                         start: start,
                         end: end
                     };
-                    $('#calendar').fullCalendar('renderEvent', eventData,true);
+                    $('#calendar').fullCalendar('renderEvent', eventData, true);
                 }
                 $('#calendar').fullCalendar('unselect');
             },
             selectable: true,
-            
             editable: true,
             eventLimit: true,
-            
+
             resources: [
-    { id: 'a', title: 'Room A' },
-    { id: 'b', title: 'Room B' },
-    { id: 'c', title: 'Room C' },
-    { id: 'd', title: 'Room D' }
-  ]
+                { id: 'a', title: 'Room A' },
+                { id: 'b', title: 'Room B' },
+                { id: 'c', title: 'Room C' },
+                { id: 'd', title: 'Room D' }
+            ]
 
         });
-
-        
     </script>
 </body>
 
