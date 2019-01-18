@@ -11,6 +11,7 @@
     <script src="js/jquery/jquery-ui.min.js"></script>
     <script src="js/fullcalendar/moment.min.js"></script>
     <script src="js/fullcalendar/fullcalendar.js"></script>
+    <script src="js/fullCalendar/scheduler.js"></script>
  
 
     <script>
@@ -30,6 +31,7 @@
 
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
+                
                 weekends: false
             })
 
@@ -40,7 +42,8 @@
         /*     dayClick: function() {
                 alert('a day has been clicked');
             }, */
-
+            
+            defaultView: 'basicWeek',
             select: function(start, end){
                 var title = prompt('Ticket Title');
                 var eventData;
@@ -57,7 +60,14 @@
             selectable: true,
             
             editable: true,
-            eventLimit: true
+            eventLimit: true,
+            
+            resources: [
+    { id: 'a', title: 'Room A' },
+    { id: 'b', title: 'Room B' },
+    { id: 'c', title: 'Room C' },
+    { id: 'd', title: 'Room D' }
+  ]
 
         });
 
