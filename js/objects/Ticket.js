@@ -7,4 +7,8 @@ function Ticket(id,title) {
         this.summary = summary;
     }
 
+    this.toString= function() {
+        return this.id + " - " + this.title;
+    }
+
 }

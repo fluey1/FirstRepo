@@ -32,33 +32,20 @@
 <body>
 
     <script>
-        /* var daysOfWeek = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-
-        document.write("<table border=1><tr>");
-        for (var i = 0; i < daysOfWeek.length; i++) {
-            document.write("<th>" + daysOfWeek[i] + "</th>");
-        }
-        document.write("</tr><tr>");
-        for (var i = 1; i <= 30; i++) {
-            if (i % 7 == 0) {
-                document.write("<td>" + i + "</td></tr>");
-            }
-            else {
-                document.write("<td>" + i + "</td>");
-            }
-        };
-        document.write("</tr></table>"); */
 
         let calendar = new Calendar();
         document.writeln(calendar.showCalendar().outerHTML);
 
         let Tickets = new TicketsController();
-    
-        Tickets.sayHello();
-        for(i = 0; i < 10; i++) {
-            let ticket = Tickets.newTicket('New Ticket');
-        console.log(ticket.id + " - " + ticket.title);
-        }
+        Tickets.initialize(10);
+        
+    /*    for(i = 0; i < 10; i++) {
+            let ticket = Tickets.getTicket(i);
+            document.writeln(ticket.toString() + "<br/>");
+        }*/
+
+        let ticket = Tickets.getTicket(2);
+        document.writeln(ticket.toString()+"<br/>");
 
     </script>
 

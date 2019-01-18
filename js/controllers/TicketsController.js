@@ -18,7 +18,14 @@ function TicketsController() {
     }
 
     this.getTicket = function(id) {
-        return tickets.indexOf(id);
+        this.ticketFound = null;
+        tickets.forEach(function(element) {
+            if(element.id == id) {
+                document.writeln("found " + element.id + " - " + element.title + "<br/>");
+                ticketFound =  element;
+            }
+        }, this);
+        return ticketFound;
     }
 
     this.newTicket = function(title) {
@@ -26,4 +33,13 @@ function TicketsController() {
         tickets.push(ticket);
         return ticket;
     }
+
+    this.initialize  = function(n) { 
+        for(i = 0; i < n; i++) {
+            let ticket = new Ticket(tickets.length, "New Ticket "+i); 
+            document.writeln("added: " + ticket.toString()+ "<br/>");
+            tickets.push(ticket);   
+        }
+    }
+
 }
