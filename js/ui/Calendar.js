@@ -20,7 +20,7 @@ function Calendar(calendarController) {
             let cell = document.createElement("td");
             cell.setAttribute("class","calendarDay");
             cell.setAttribute("valign","top");
-            cell.innerHTML = "<div><table><th class='cellHeader'>" + i + "</th><tr id='calendarCell" + i +  "'></tr></div>";
+            cell.innerHTML = "<table><th class='cellHeader'>" + i + "</th><tr id='calendarCell" + i +  "'></tr>";
             calendarController.addCell(i, cell);
             row.appendChild(cell);
             table.appendChild(row);
@@ -30,7 +30,7 @@ function Calendar(calendarController) {
             let cell = document.createElement("td");
             cell.setAttribute("valign","top");
             cell.setAttribute("class","calendarDay");
-            cell.innerHTML = "<div><table><th class='cellHeader'>" + i + "</th><tr id='calendarCell" + i +  "'></tr></div>";
+            cell.innerHTML = "<table><th class='cellHeader'>" + i + "</th><tr id='calendarCell" + i +  "'></tr>";
             calendarController.addCell(i, cell);
             row.appendChild(cell);  
         }

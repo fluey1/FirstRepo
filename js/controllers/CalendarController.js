@@ -11,6 +11,8 @@ function CalendarController() {
             key: id,
             value: cell
         });
+
+        //console.log("Added: key:" + id + " value:" + cell.innerHTML);
     }
 
     this.isCollide = function(a, b) {
