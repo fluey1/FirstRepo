@@ -7,7 +7,15 @@
     <title>jQuery UI Draggable - Default functionality</title>
     <style>
         #draggable,
-        #mybox {
+        #mybox, #ticketCell {
+            width: 120px;
+            height: 20px;
+            padding: 0.5em;
+            border: 1px;
+            border-color: black;
+            border-style: solid
+        }
+        .calendarDay { 
             width: 150px;
             height: 150px;
             padding: 0.5em;
@@ -15,6 +23,8 @@
             border-color: black;
             border-style: solid
         }
+
+
     </style>
     <script src="js/jquery/jquery-3.3.1.js"></script>
     <script src="js/jquery/jquery-ui.min.js"></script>
@@ -23,8 +33,13 @@
     <script src="js/ui/Calendar.js"></script>
     <script>
         $(function () {
- 
-            $(".ticket").draggable();
+
+            $(".ticketCell").draggable({
+                stop: function() {
+                    let pos = this.getBoundingClientRect();
+                    console.log(pos);
+                }
+            });
         });
     </script>
 </head>
@@ -33,21 +48,52 @@
 
     <script>
 
-        let calendar = new Calendar();
-        document.writeln(calendar.showCalendar().outerHTML);
+        
 
         let Tickets = new TicketsController();
         Tickets.initialize(10);
-        
-    /*    for(i = 0; i < 10; i++) {
-            let ticket = Tickets.getTicket(i);
-            document.writeln(ticket.toString() + "<br/>");
-        }*/
 
-        let ticket = Tickets.getTicket(2);
-        document.writeln(ticket.toString()+"<br/>");
+        //let ticket = Tickets.getTicket(2);
+        //document.writeln(ticket.toString() + "<br/>");
 
     </script>
+
+    <table>
+        <tr>
+            <td valign="top">
+                <table id="ticketsTable">
+                    
+                    <script>
+                    
+                        let ticketsTable = document.getElementById("ticketsTable");
+                        
+                        Tickets.getTickets().forEach(element => {
+                            let ticketRow = document.createElement("tr");
+                            
+                            let ticketCell = document.createElement("div");
+                            ticketCell.setAttribute("class","ticketCell");
+                            ticketCell.setAttribute("id","ticketCell");
+                            ticketCell.innerHTML =  element.toString();
+                            ticketRow.appendChild(ticketCell);
+                            ticketsTable.appendChild(ticketRow); 
+                        });
+                                 
+                    </script>
+                </table>
+                
+
+            </td>
+                
+            
+            <td>
+                    <script>
+                            let calendar = new Calendar();
+                            document.writeln(calendar.showCalendar().outerHTML);
+                    </script>
+            </td>
+        </tr>
+
+    </table>
 
 </body>
 

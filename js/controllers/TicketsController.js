@@ -21,7 +21,6 @@ function TicketsController() {
         this.ticketFound = null;
         tickets.forEach(function(element) {
             if(element.id == id) {
-                document.writeln("found " + element.id + " - " + element.title + "<br/>");
                 ticketFound =  element;
             }
         }, this);
@@ -37,7 +36,6 @@ function TicketsController() {
     this.initialize  = function(n) { 
         for(i = 0; i < n; i++) {
             let ticket = new Ticket(tickets.length, "New Ticket "+i); 
-            document.writeln("added: " + ticket.toString()+ "<br/>");
             tickets.push(ticket);   
         }
     }

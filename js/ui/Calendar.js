@@ -19,6 +19,7 @@ function Calendar() {
         if (i % 7 == 0) {
             
             let cell = document.createElement("td");
+            cell.setAttribute("class","calendarDay");
             cell.innerHTML = i;
             row.appendChild(cell);
             table.appendChild(row);
@@ -26,6 +27,7 @@ function Calendar() {
         }
         else {
             let cell = document.createElement("td");
+            cell.setAttribute("class","calendarDay");
             cell.innerHTML = i;
             row.appendChild(cell);  
         }
