@@ -19,8 +19,24 @@
 </head>
 
 <body>
-    <div id='calendar'></div>
+    
     <p>welcom home</p>
+    <table cellpadding=5 cellspacing=5>
+        <tr>
+            <td valign="top" width ="15%">
+                <div id="tickets" >
+                    <ul>
+
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <div id='calendar'></div>
+            </td>
+        </tr>
+
+    </table>
+
     <script>
         $(function() {
 
@@ -66,6 +82,25 @@
             ]
 
         });
+
+        $("#tickets ul").append("<li>New keyboard</li>");
+        $("#tickets ul").append("<li>Fix report</li>");
+        $("#tickets ul").append("<li>NCR Report</li>");
+        $("#tickets ul").append("<li>Issue with Portal</li>");
+        $("#tickets ul").append("<li>EPDM broken</li>");
+        $("#tickets ul").append("<li>Solidworks not working</li>");
+        
+        $("#tickets li").css("border","1px");
+        $("#tickets li").css("border-style","solid");
+        $("#tickets li").css("margin-top","10px");
+        $("#tickets li").css("height","20px");
+
+        $("#tickets li").draggable({
+            stop: function() {
+                
+            }
+        })
+
     </script>
 </body>
 
