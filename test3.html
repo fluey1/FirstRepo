@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    <title>Michael</title>
+    <script src="js/jquery/jquery-3.3.1.js"></script>
+    <script src="js/jquery/jquery-ui.min.js"></script>
+    <style>
+        .container {
+            border: solid;
+            border-width: 1px;
+            background-color:coral;
+            color:white;
+            width:200px;
+            position: absolute;
+            
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $(".container").draggable();
+
+
+            $(".container").dblclick(function() {
+                $(this).animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    height:'50px',
+                    width:'250px'
+                    });
+            });
+            
+
+         
+
+
+        });
+        function pushMe() {
+         //   $("#main").append("<div class='container'><p>New Div</p></div>").draggable();
+         let d = document.createElement("div");
+         d.setAttribute("class","container");
+         d.innerHTML = "New Div";
+         let m = document.getElementById("main");
+         m.append(d);
+
+         $(".container").draggable();
+        }
+        
+    </script>
+
+</head>
+
+<body>
+    <h1>Welcome to our site</h1>
+    <h2>this is the subtitle of the site</h2>
+    <h3>this is an h3 tag, which is a little smaller</h3>
+    <button onclick="pushMe()">Push Me</button>
+    <p>This is the paragraph tag that allows us to write a sentence.</p>
+    <p>This is another sentence here</p>
+    <div id="main">
+
+    </div>
+    
+
+</body>
+
+
+</html>
