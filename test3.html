@@ -16,30 +16,28 @@
             background-color:coral;
             color:white;
             width:200px;
-            position: absolute;
+            height:100px;
             
         }
     </style>
 
     <script>
-        $(document).ready(function() {
-            $(".container").draggable();
 
-
-            $(".container").dblclick(function() {
+        function customAnimate() {
+            
                 $(this).animate({
                     left: '250px',
                     opacity: '0.5',
                     height:'50px',
                     width:'250px'
                     });
-            });
-            
+        
+        }
 
-         
+        function customClick() {
+            $(this).slideUp();
+        }
 
-
-        });
         function pushMe() {
          //   $("#main").append("<div class='container'><p>New Div</p></div>").draggable();
          let d = document.createElement("div");
@@ -49,6 +47,9 @@
          m.append(d);
 
          $(".container").draggable();
+         $(".container").dblclick(customAnimate);
+         $(".container").fadeTo("slow",0.75);
+         $(".container").click(customClick);
         }
         
     </script>
