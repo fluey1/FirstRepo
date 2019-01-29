@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    
+
+
     <title>Michael</title>
     <script src="js/jquery/jquery-3.3.1.js"></script>
     <script src="js/jquery/jquery-ui.min.js"></script>
@@ -17,41 +18,73 @@
             color:white;
             width:200px;
             height:100px;
-            
         }
+        
+        .listItem {
+            margin-top: 10px;
+            width:150px;
+        }
+
+        ul {
+            height: 300px;
+            border: solid;
+            border-width: 1px;
+            width: 200px;
+        }
+            
+        
     </style>
 
     <script>
 
-        function customAnimate() {
-            
-                $(this).animate({
-                    left: '250px',
-                    opacity: '0.5',
-                    height:'50px',
-                    width:'250px'
-                    });
-        
-        }
+        $(document).ready(function () {
+            $("#btn_item").on('click', addItem);
+            $("#txt_item").keypress(function (e) {
+                if (e.which == 13) {
+                    addItem();
+                }
+            })
+        });
 
         function customClick() {
             $(this).slideUp();
         }
 
         function pushMe() {
-         //   $("#main").append("<div class='container'><p>New Div</p></div>").draggable();
-         let d = document.createElement("div");
-         d.setAttribute("class","container");
-         d.innerHTML = "New Div";
-         let m = document.getElementById("main");
-         m.append(d);
+            //   $("#main").append("<div class='container'><p>New Div</p></div>").draggable();
+            let d = document.createElement("div");
+            d.setAttribute("class", "container");
+            d.innerHTML = "New Div";
+            let m = document.getElementById("main");
 
-         $(".container").draggable();
-         $(".container").dblclick(customAnimate);
-         $(".container").fadeTo("slow",0.75);
-         $(".container").click(customClick);
+            $(d).draggable();
+            $(d).fadeTo("slow", 0.75);
+            $(d).click(customClick);
+
+            m.append(d);
         }
-        
+
+        function showAll() {
+            $(".container").each(function () {
+                $(this).slideDown();
+            })
+        }
+        function showItem() {
+            $(this).css("text-decoration", "line-through");
+            $(this).fadeTo("slow", 0.50);
+        }
+        function addItem() {
+            let item = $("#txt_item").val();
+            let listItem = document.createElement("li");
+            listItem.className = "listItem"
+            listItem.innerHTML = item;
+            $("#ul_shopping").append(listItem);
+            $(listItem).draggable();
+            $(listItem).on('click', showItem);
+            $("#txt_item").val("");
+
+        }
+
     </script>
 
 </head>
@@ -60,13 +93,20 @@
     <h1>Welcome to our site</h1>
     <h2>this is the subtitle of the site</h2>
     <h3>this is an h3 tag, which is a little smaller</h3>
-    <button onclick="pushMe()">Push Me</button>
-    <p>This is the paragraph tag that allows us to write a sentence.</p>
-    <p>This is another sentence here</p>
-    <div id="main">
+
+    <div>
+
+        <input id="txt_item" name="txt_item" type="text" />
+        <button id="btn_item">Add</button>
+
 
     </div>
-    
+
+    <div>
+        <ul id="ul_shopping">
+
+        </ul>
+    </div>
 
 </body>
 
