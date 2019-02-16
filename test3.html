@@ -10,6 +10,7 @@
     <title>Michael</title>
     <script src="js/jquery/jquery-3.3.1.js"></script>
     <script src="js/jquery/jquery-ui.min.js"></script>
+    <script src="js/objects/block.js"></script>
     <style>
         .container {
             border: solid;
@@ -30,6 +31,26 @@
             border: solid;
             border-width: 1px;
             width: 200px;
+        }
+
+        .box {
+            border:solid;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box p{
+            font-size: 12px;
+        }
+
+        #board {
+            border:solid;
+            width:1000px;
+            height:500px;
+        }
+
+        #table_panel {
+            vertical-align: top;
         }
             
         
@@ -83,6 +104,11 @@
             $(listItem).on('click', showItem);
             $("#txt_item").val("");
 
+            let block = new Block(item,"none");
+            result = block.show();
+            
+            $("#board").append(result);
+            $(".box").draggable();
         }
 
     </script>
@@ -101,12 +127,27 @@
 
 
     </div>
+    <table>
+        <tr>
+            <td id="table_panel">
+                <div id="panel">
+                    <ul id="ul_shopping">
+            
+                    </ul>
+                </div>
+            </td>
 
-    <div>
-        <ul id="ul_shopping">
+            <td>
+                <div id="board">
 
-        </ul>
-    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    
+
+    
 
 </body>
 
